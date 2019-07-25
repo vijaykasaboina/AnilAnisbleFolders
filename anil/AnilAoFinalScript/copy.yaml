@@ -1,0 +1,11 @@
+---
+- hosts: web
+  tasks: 
+   - name: change the permitions of the file and owner and group
+     copy:
+      src: /home/anil/sai/
+      dest: /home/anil/ysconfig1/
+      owner: anil
+      group: anil
+      mode: '0777'
+      backup: yes

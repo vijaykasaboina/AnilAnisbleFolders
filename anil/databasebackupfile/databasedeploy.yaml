@@ -1,0 +1,9 @@
+---
+- hosts: database  
+  tasks:
+   - name: execute the date command
+     shell: "{{ name }}"
+   - name: print echo command
+     command: "echo print date {{ name }} "
+   - name: import another playbook
+     include: sample.yaml

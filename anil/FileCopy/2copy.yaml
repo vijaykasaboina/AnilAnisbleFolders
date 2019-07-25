@@ -1,0 +1,10 @@
+---
+- hosts: dev
+  tasks:
+   - name: copy some specific files
+     synchronize:
+      src: "{{ item }}"
+      dest: "/home/anil/tshirt/"
+     with_fileglob:
+      - "/home/anil/FileCopy/*.sh"
+  

@@ -1,0 +1,33 @@
+- hosts: web
+  tasks:
+   - name: remove backup direcotories
+     file:
+      path: "{{ item }}"
+      state: absent
+     with_items:
+      - '/home/anil/ysconfig_backup'
+      - '/home/anil/scheduler_backup'
+      - '/home/anil/schedulercore_backup'
+   - name: create backup directory
+     file: 
+      path: " {{ item }} "
+      state: directory
+      owner: anil
+      group: anil
+      mode: 0755
+     with_items:
+      - '/home/anil/ysconfig_backup'
+      - '/home/anil/scheduler_backup'
+      - '/home/anil/schedulercore_backup'
+   - name: copy the files
+     synchronize:
+      src: "{{ item.srcdir }}"
+      dest: "{{ item.destdir }}"
+     with_items:
+      - { srcdir:  /home/anil/ysconfig/  , destdir: /home/anil/ysconfig_backup/ }
+      - { srcdir:  /home/anil/scheduler/  , destdir: /home/anil/scheduler_backup/ }
+      - { srcdir:  /home/anil/scheduler-core/ , destdir: /home/anil/schedulercore_backup/ }
+      - { srcdir: /home/anil/scheduler-web/ , destdir: /home/anil/scheduler-web_backup }
+      - {  srcdir: /home/anil/sitestatus/ ,  destdir: /home/anil/sitestatus_backup }
+      - { srcdir: /home/anil/bin/ , destdir: /home/anil/bin_backup }
+     delegate_to: "{{ inventory_hostname }}"

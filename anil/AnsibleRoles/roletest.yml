@@ -1,0 +1,5 @@
+- hosts: web
+  vars: 
+    - first: "coming from main run"
+  roles:
+     - { role: roletest }

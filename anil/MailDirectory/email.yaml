@@ -1,0 +1,12 @@
+---
+- name: sending an email
+  hosts: localhost
+  tasks:
+   - name: send email
+     mail:
+      username: "anil"
+      password: "anil@123"
+      to: "anil.devops86@gmail.com"
+      subject: ansible
+      body: "hello from ansible "
+    

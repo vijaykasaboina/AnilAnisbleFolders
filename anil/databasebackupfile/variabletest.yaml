@@ -1,0 +1,14 @@
+---
+- hosts: database
+  tasks:
+   - name: create a folder
+     synchronize:
+      src: /home/anil/radhika/
+      dest:  /home/anil/{{release}}/dev1/ 
+     delegate_to: "{{ inventory_hostname }}"
+     register: result
+   - name: display the results
+     debug: msg="{{ result}}"
+   - name: include sample.yaml file
+     include: sample.yaml
+     when: result.rc == 0

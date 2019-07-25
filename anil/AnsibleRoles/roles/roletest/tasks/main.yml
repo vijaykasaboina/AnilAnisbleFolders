@@ -1,0 +1,5 @@
+---
+  #- include_vars: myvar.yml
+  - name: display the message
+    debug:
+      msg: "{{first}}"

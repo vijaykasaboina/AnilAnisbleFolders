@@ -1,0 +1,11 @@
+---
+- hosts: web
+  tasks:
+   - name: display output of host file variables
+     copy:
+      src: /home/anil/raju/
+      dest: /home/anil/rms/
+      remote_src: yes
+      delegate_to= "{{ item}}"
+      with_items:
+       -  web 

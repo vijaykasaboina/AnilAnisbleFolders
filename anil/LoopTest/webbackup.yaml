@@ -1,0 +1,6 @@
+- name: create module backu
+  synchronize:
+   src:  "{{ item.srcdir }}"
+   dest: "{{ item.destdir }}"
+  delegate_to: "{{ inventory_hostname }}"
+

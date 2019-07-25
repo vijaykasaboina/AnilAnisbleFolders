@@ -1,0 +1,10 @@
+---
+- hosts: server
+  tasks:
+   - name: set fact
+     set_fact:
+        new_ansible_var: 5
+   - name: run the script
+     shell: "dryrun={{new_ansible_var}} sh /home/anil/anildir/anilshell.sh "
+       
+  

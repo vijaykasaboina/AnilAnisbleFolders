@@ -1,0 +1,11 @@
+---
+- hosts: web
+  tasks:
+   - name: copy files
+     synchronize:
+      src: "{{ item.name }}" 
+      dest: "{{ item.addr }}"
+     #with_fileglob: /home/anil/FileCopy/anil.tar.gz
+     with_items:
+      - { name: /home/anil/FileCopy/anil.tar.gz , addr: /home/anil/ }
+      - { name: /home/anil/kumar.tar.gz  , addr: /home/anil/ }

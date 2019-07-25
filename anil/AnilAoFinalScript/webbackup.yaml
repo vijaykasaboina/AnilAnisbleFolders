@@ -1,0 +1,22 @@
+---
+ - hosts: web  
+   tasks:
+    - name: create a directory
+      file:
+       path: /home/anil/ysconfig_backup
+       state: directory
+    - name: remove the ysconfig_backup directory
+      file:
+       path:  /home/anil/ysconfig_backup
+       state: absent
+    - name: create a yscofig_backup directory
+      file: 
+       path: /home/anil/ysconfig_backup
+       state: directory
+    - name: copy files from /home/anil/ysconfig to /home/anil/ysconfig_backup
+      shell: cp -r /home/anil/ysconfig1/* /home/anil/ysconfig_backup/
+    - name: create this directory in remote machine
+      file:
+       path: "{{ destination }}"
+       state: directory
+      

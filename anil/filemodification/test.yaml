@@ -1,0 +1,13 @@
+---
+- hosts: web
+  tasks:
+   - name: create scheduler-web directory
+     file:
+      path:  "/home/anil/.release/{{ env }}/{{ item }} "
+      state: directory
+     with_items:
+      - ysconfig
+      - scheduler
+      - scheduler-web
+      - sitestatus
+      

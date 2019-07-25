@@ -1,0 +1,12 @@
+---
+- hosts: web
+  become: yes
+  tasks:
+   - name: stop the server
+     systemd:
+      name: httpd
+      state: stopped
+     register: output
+   - debug: 
+      msg="htppd server stopped succcessfully {{ansible_hostname}}"
+     when: output.failed == false

@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  tasks:
+   - name: copy files
+     command:  cp -r "{{ item.srcdir }}" "{{ item.destdir}}"
+     with_items:
+      - { srcdir: /home/anil/doll1/ , destdir: /home/anil/FileCopy/ }
+      - { srcdir: /home/anil/india1/ , destdir: /home/anil/india2/ }

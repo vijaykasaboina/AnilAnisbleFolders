@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  tasks:
+   - name: delete the cronjob
+     cron:
+      user: anil
+      name: anildirs
+      disabled: yes
+

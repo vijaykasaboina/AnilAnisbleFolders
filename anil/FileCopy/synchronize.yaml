@@ -1,0 +1,12 @@
+---
+- hosts: web
+  tasks:
+   - name: copy the files
+     synchronize:
+      src: "{{ item.srcdir }}"
+      dest: "{{ item.destdir }}"
+     with_items:
+      - { srcdir:  /home/anil/sorry1/gm.tar.gz , destdir: /home/anil/gm/ }
+      - { srcdir:  /home/anil/soory1/hi.tar.gz  , destdir: /home/anil/hi/ }
+      - { srcdir:  /home/anil/sorry1/sorry.tar.gz , destdir: /home/anil/sorry/ }
+     delegate_to: "{{ inventory_hostname }}"

@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+   - name: kill the httpd server
+     systemd:
+      name: httpd
+      state: stopped
+   - name: status of the server
+     register: running_processes
+     shell: "ps -fu | grep -e 'httpd' | grep -v grep |grep -v awk | awk '{print $2}'" 
+   - name: display the output
+     debug: msg="{{ running_processes }}"
+    

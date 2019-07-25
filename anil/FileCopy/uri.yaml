@@ -1,0 +1,25 @@
+---
+- hosts: dev
+  become: yes
+  tasks:
+   - name: checke the url 
+     uri:
+      url: http://18.218.90.151/webfolder/anil.tar.gz
+     register: output
+   - debug: 
+      msg: " anil.tar.gz file is available {{ output }}"
+   - name: download the tar fiile
+     get_url:
+      url:  http://18.218.90.151/webfolder/anil.tar.gz
+      dest: /home/anil/anildir/
+     #delegate_to: "{{ inventory_hostname }}"
+     when: output.status == 200
+   - name: unarchive the file
+     unarchive:
+      src: /home/anil/anildir/anil.tar.gz
+      dest: /home/anil/anildir2/
+      owner: rani
+      group: rani
+      mode: 0755
+     
+

@@ -1,0 +1,14 @@
+---
+- hosts: web
+  tasks:
+   - name: fetch the file from the website
+     get_url:
+      url: http://18.216.114.80/anil.tar.gz
+      dest: /home/anil/URIModule/
+     register: result1
+   - debug: msg= " {{ result1 }} "
+   - name: display the date on console
+     command: date
+     register: output
+     changed_when: true
+   - debug: msg= "{{ output }} "

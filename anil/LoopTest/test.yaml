@@ -1,0 +1,6 @@
+---
+- hosts: web 
+  tasks:
+   - include: webbackup.yaml
+     loop:
+      - { destdir: " /home/anil/bowl1 ", srcdir:  " /home/anil/doll1 " }

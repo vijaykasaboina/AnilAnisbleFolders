@@ -1,0 +1,20 @@
+---
+- hosts: remote
+  tasks:
+   - name: archieve the file in remote machine
+     archive:
+      path: /home/anil/remote/*
+      dest: /home/anil/remote1/anil.tar.gz
+      format: gz
+- hosts: web
+  tasks:
+   - name: copy fiel from remote machine
+     synchronize:
+      src: /home/anil/remote1/
+      dest: /home/anil/remote/
+     delegate_to: "{{ groups['remote'][0] }}"
+   - name: unarchieve the files
+     unarchive:
+      src: /home/anil/remote/anil.tar.gz
+      dest: /home/anil/remote1/
+      remote_src: yes

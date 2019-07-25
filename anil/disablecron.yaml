@@ -1,0 +1,20 @@
+---
+- hosts: web
+  tasks:
+   - name: disable cron job
+     cron:
+      name: build_ela
+      user: anil
+      job: build_ela.sh
+      disabled: yes
+   - name: wait for 10 seconds
+     command: sleep 10
+   - name: enable cron job
+     cron:
+      name: build_ela
+      user: anil
+      job: build_ela.sh
+      disabled: no
+      
+      
+      

@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  tasks:
+   - name: Send a success email
+     mail:
+      host: smtp.mandrillapp.com
+      port: 587 
+      username: anil
+      password: anil@123
+      to: root
+      subject: Installation Update
+      body: 'The installation is complete.'

@@ -1,0 +1,14 @@
+---
+- hosts: web
+  vars:
+   artifact_files:
+    - kumar.tar.gz
+    - sai.tar.gz
+    - anil.tar.gz
+  tasks:
+   - name: Ansible check file exists example.
+     stat:
+      path: /home/anil/{{ item }}
+     with_itms: " {{ artifact_files }} "
+     register: file_details
+   - debug: msg="{{ file_details }}"

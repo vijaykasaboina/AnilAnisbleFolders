@@ -1,0 +1,11 @@
+- name: display the variable values
+  debug: 
+   msg: "{{ name }}"
+- name: perform the shell script
+  shell: ./anil.sh a="{{release}}"
+  args:
+   chdir: /home/anil/
+  register: output
+- debug: msg:"{{ output }}"
+
+

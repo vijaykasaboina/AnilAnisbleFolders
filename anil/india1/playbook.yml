@@ -1,0 +1,20 @@
+- hosts: localhost
+  tasks:
+    - name: copy the file
+      copy:
+        src: /home/anil/anil.html
+        dest: /var/www/html/
+      become: yes
+      register: sp
+       
+    - name: file is changde in httpd servers
+      debug:
+        msg: " file is changed so restart the server
+      #when: sp.state == success
+      notify:
+        - start server
+  handlers:
+    - name: start server
+      systemd:
+        name: httpd
+        state: started

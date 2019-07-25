@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  tasks:
+   - name: copy files
+     synchronize: 
+      src: /home/anil/doll1/
+      dest: /home/anil/doll2/
+     delegate_to: " {{ inventory_hostname }} "

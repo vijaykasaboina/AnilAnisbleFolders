@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  tasks:
+   - name: connect to server
+     uri:
+      url: https://docs.ansible.com/ansible/latest/modules/uri_module.html
+     register: result
+   - name: display the output
+     debug: msg="{{ result }}"
+   - name: download the file form another server
+     uri:
+      url: http://18.220.192.113:80/anil.json
+      method: GET
+      dest: /home/anil/URIModule/
+      status_code: 200
+      
+      
