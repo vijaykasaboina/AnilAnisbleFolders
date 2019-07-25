@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  tasks:
+   - name: crate cron job
+     cron:
+      name: bottle
+      minute: 30
+      hour: 3
+      job: date
+      user: root

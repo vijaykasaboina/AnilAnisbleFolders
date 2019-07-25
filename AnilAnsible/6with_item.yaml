@@ -1,0 +1,9 @@
+---
+ - hosts: localhost
+   tasks:
+    - name: with_sequemce
+      file:
+       dest: "/root/AnilAnsible/sequence_{{item}}"
+       state: directory
+      with_sequence: start=0 end=100 stride=20
+     

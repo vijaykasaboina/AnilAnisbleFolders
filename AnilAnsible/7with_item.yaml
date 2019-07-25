@@ -1,0 +1,9 @@
+---
+ - hosts: localhost
+   tasks:
+    - name: with_sequemce
+      file:
+       dest: "{{item}}"
+       state: directory
+      with_sequence: start=0 end=100 stride=20 format=/home/james/sequence_%d
+     

@@ -1,0 +1,14 @@
+--- 
+- hosts: localhost
+  tasks:
+   - name: "Determine if the HTTPD is installed"
+     register: validatehttpd
+     shell: httpd
+   - name: "display the outpu tof the previous task"
+     debug: msg="{{validatehttpd}}"
+
+   - name: Ensure Apache is at the Latest version
+     yum:
+      name: httpd
+      state: latest
+     when: 'not found' in validatehttpd.stdout

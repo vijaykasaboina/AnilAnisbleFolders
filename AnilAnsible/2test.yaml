@@ -1,0 +1,9 @@
+--- 
+- hosts: localhost
+  tasks:
+   - name: Ensure Apache is at the Latest version
+     systemd:
+      name: httpd
+      state: restarted
+     register: result
+   - debug: msg="{{ result }}"

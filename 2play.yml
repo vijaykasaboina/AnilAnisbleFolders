@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  tasks:
+    - name: install httpd package
+      yum:
+        name: httpd
+        state: installed 
+    - name: just force systemd to reload configs
+      systemd:
+        name: httpd
+        state: restarted
+        daemon_reload: yes

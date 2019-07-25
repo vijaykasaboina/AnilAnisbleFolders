@@ -1,0 +1,18 @@
+---
+ - hosts: localhost
+   tasks: 
+    - name: the list of tasks that will wib executed within the playbook
+      user:
+       name: "{{item.key}}"
+       comment: "{{ item.value.full_name }} "
+      with_dict:
+       james:
+        full_name: james Spurin
+       hayley:
+        full_name: Hayley Spurin
+       lilly:
+        full_name: Lilly Spurin
+       anwen:
+        full_name: Anwen Spurin
+...
+  

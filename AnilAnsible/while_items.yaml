@@ -1,0 +1,26 @@
+---
+- 
+
+  hosts: localhost
+  vars:
+   temp: hai
+  tasks:
+   - name : create the user
+     user:
+      name: "{{ item }}"
+      state: present
+     register: result
+     notify: output
+     with_items:
+      - rani
+      - raju
+      - rowdy
+     when: " 'hai'  in temp "
+   - name: dugug variable
+     debug:
+      var: result
+      verbosity: 5
+   - name: result of the user task
+     debug: msg="{{ result }}"
+   - name: output
+     debug: msg="{{ result.msg }}"

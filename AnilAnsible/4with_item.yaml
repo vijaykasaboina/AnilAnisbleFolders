@@ -1,0 +1,18 @@
+---
+ - hosts: localhost
+   tasks: 
+    - name: the list of tasks that will wib executed within the playbook
+      user:
+       name: "{{item.1}}"
+       comment: "{{ item.1  }} {{item.0.surname }}  "
+      with_subelements:
+       - family:
+          surname: Spurin
+          members:
+           - james
+           - hayley
+           - lilly
+           - anwen
+       - members
+...
+  

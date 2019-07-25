@@ -1,0 +1,13 @@
+---
+ - hosts: localhost
+   tasks:
+    - name: with_sequemce
+      file:
+       dest: "/root/AnilAnsible/{{item}}"
+       state: directory
+      with_random_choice: 
+       - "google"
+       - "facebook"
+       - "microsoft"
+       - "apple"
+     

@@ -1,0 +1,8 @@
+---
+- name: debug modules
+  hosts: localhost
+  tasks:
+   - name: debug message
+     debug: 
+      msg: play1 - task1
+  

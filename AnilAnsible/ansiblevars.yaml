@@ -1,0 +1,22 @@
+---
+ - name: Testing my knowledge on ansible variables
+   hosts: localhost
+   vars:
+    - greetings: "india is mycountry"
+   tasks:
+    - name: debug message
+      debug: msg="{{ greetings}}"
+ - name: testing ansible varbales
+   hosts: localhost
+   vars:
+     - hello: "hanppy new year"
+   tasks:
+    - name: display the variables values
+      debug: msg="{{ hello }}"
+    - name: display list of files
+      shell: ls -lrt
+      register: login
+    - debug: msg=" the value of  the output is {{ login.stdout}}"
+    - debug: msg=" the values of th eoutput is {{ login['stdout']}}"
+    - name: output a message
+      debug: msg="{{hello}}"

@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  tasks:
+   - name: install package
+     package:
+      name: httpd
+      state: present
+   - name: who is the user
+     command: whoami
+     register: result
+     changed_when: false
+   - debug: msg="{{result.stdout}}"
+    
